@@ -21,7 +21,7 @@ header a:hover {
   color: #4f11a0;
 }
 
-h1 {
+#title {
   text-align: center;
   margin: 25px auto;
   width: 500px;
@@ -41,19 +41,39 @@ h1 {
   margin-top: 0;
 }
 
+#wrapper {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 25px auto;
+  width: 500px;
+}
+
+#question {
+  text-align: left;
+  margin: 25px auto;
+  width: 500px;
+}
+
 li {
   background-color: #4f11a0;
   margin-top: 10px;
   padding: 5px 15px;
-  width: 80%;
   font-size: 18px;
   color: white;
+  border-radius: 5px;
+  width: 200px;
 }
 
 #feedback {
   margin-top: 20px;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid gray;
   font-size: 20px;
+  width: 500px;
+  color: gray;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.5;
 }
 
 .all-done {
@@ -66,7 +86,7 @@ li {
   color: white;
   padding: 7px 12px;
   border: none;
-  margin-top: 10px;
+  margin: 10px 15px;
 }
 
 .btn:hover {

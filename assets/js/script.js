@@ -59,6 +59,7 @@ var questions = [
     answer: "parenthesis",
   },
 ];
+var scoreIdCounter = 0;
 var score = 0;
 var questionIndex = 0;
 var timerEl = document.getElementById("countdown");
@@ -71,6 +72,10 @@ var instructionsEl = document.getElementById("instructions");
 var introContentEl = document.getElementById("intro-content");
 var quizContentEl = document.getElementById("quiz-content");
 var choiceListEl = document.createElement("ol");
+var finalScore = "";
+
+// Array to hold scores for saving
+var allScores = [];
 
 // Countdown function
 function countdown() {
@@ -141,6 +146,43 @@ function checkAnswer(event) {
   quizContentEl.appendChild(feedback);
 }
 
+// Inital form
+var initialsFormHandler = function (event) {
+  event.preventDefault();
+  var initialsInput = document.getElementById("initials-form").value;
+
+  // Check if initials are empty
+  if (initialsInput === "") {
+    alert("You need to add your initials to save your score!");
+    return false;
+  }
+
+  var finalScoreObj = {
+    name: initialsInput,
+    score: finalScore,
+  };
+
+  createNewScore(finalScoreObj);
+};
+
+var createNewScore = function (finalScoreObj) {
+  var scoreItemEl = document.createElement("li");
+  scoreItemEl.setAttribute("class", "score-item");
+  scoreItemEl.setAttribute("id", scoreIdCounter);
+  scoreItemEl.textContent = finalScoreObj.name + "-" + finalScoreObj.score;
+
+  // save score as an object with name, type, status, and id properties then push it into allScores array
+  finalScoreObj.id = scoreIdCounter;
+
+  allScores.push(finalScoreObj);
+
+  // save tasks to localStorage
+  saveScores();
+
+  // increase task counter for next unique task id
+  scoreIdCounter++;
+};
+
 // Show final page
 var allDone = function () {
   introContentEl.style.display = "none";
@@ -158,7 +200,7 @@ var allDone = function () {
 
   // Calculate score with time left
   if (timeLeft <= 0) {
-    var finalScore = 0;
+    finalScore = 0;
   } else {
     finalScore = timeLeft;
   }
@@ -173,12 +215,12 @@ var allDone = function () {
   quizContentEl.appendChild(inputLabel);
 
   // Input initials
-  var inputInitials = document.createElement("input");
-  inputInitials.setAttribute("type", "text");
-  inputInitials.setAttribute("id", "initals");
-  inputInitials.textContent = "";
+  var formEl = document.createElement("input");
+  formEl.setAttribute("type", "text");
+  formEl.setAttribute("id", "initials-form");
+  formEl.setAttribute("placeholder", "");
 
-  quizContentEl.appendChild(inputInitials);
+  quizContentEl.appendChild(formEl);
 
   // Submit button
   var submit = document.createElement("button");
@@ -188,6 +230,13 @@ var allDone = function () {
   submit.textContent = "Submit";
 
   quizContentEl.appendChild(submit);
+
+  var submitButton = document.getElementById("submit");
+  submitButton.addEventListener("click", initialsFormHandler);
+};
+
+var saveScores = function () {
+  localStorage.setItem("allScores", JSON.stringify(allScores));
 };
 
 startTimerEl.addEventListener("click", countdown);
