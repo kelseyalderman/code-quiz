@@ -8,22 +8,26 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 50px 20px;
+  margin: 50px 50px 25px 50px;
+  align-items: center;
 }
 
-#high-scores-btn {
-  outline: none;
-  border: none;
-  background-color: white;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  text-align: left;
-  padding: 0;
-  font-size: 16px;
+header a {
   color: #dc11e0;
+  text-decoration: none;
 }
 
-.page-content {
+header a:hover {
+  color: #4f11a0;
+}
+
+h1 {
+  text-align: center;
+  margin: 25px auto;
+  width: 500px;
+}
+
+#intro-content {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
@@ -32,9 +36,28 @@ header {
   width: 500px;
 }
 
-.page-content p {
+#instructions {
   text-align: center;
   margin-top: 0;
+}
+
+li {
+  background-color: #4f11a0;
+  margin-top: 10px;
+  padding: 5px 15px;
+  width: 80%;
+  font-size: 18px;
+  color: white;
+}
+
+#feedback {
+  margin-top: 20px;
+  border-top: 1px solid lightgray;
+  font-size: 20px;
+}
+
+.all-done {
+  font-size: 24px;
 }
 
 .btn {
@@ -43,6 +66,7 @@ header {
   color: white;
   padding: 7px 12px;
   border: none;
+  margin-top: 10px;
 }
 
 .btn:hover {
