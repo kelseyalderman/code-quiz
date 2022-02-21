@@ -1,8 +1,9 @@
+// Defined variables
 var scoresList = document.getElementById("scoresOl");
 var clear = document.getElementById("clear-scores");
 var back = document.getElementById("go-back");
 
-// Retrieve local storate
+// Retrieve local storage
 var loadScores = function () {
   var savedScores = localStorage.getItem("all-scores");
   // if there are no tasks, set tasks to an empty array and return out of the function

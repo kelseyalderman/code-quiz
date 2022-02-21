@@ -1,28 +1,3 @@
-// Click start quiz
-//  timer sets to 75 and counts down from 1 until it reaches 0
-//  first question appears on screen
-//      fill <h1> with questions
-//      hide <p>
-//      create ordered list with choices and append to <h1>
-// When a choice is selected
-//  check to see if it is correct
-//      if true
-//          see correct message
-//      if false
-//          see wrong message
-//          deduct 10 seconds from time
-//   if time remaining >0
-//      move to next question
-//  if time remaining <= 0
-//      all done appears on screen
-// All Done page
-//  fill <h1> with All Done!
-//  show final score
-//  Form to enter initials
-//  submit button to save score
-// When score is submitted
-//      show high scores page
-
 // Questions
 var questions = [
   {
@@ -59,6 +34,8 @@ var questions = [
     answer: "parenthesis",
   },
 ];
+
+// Defined variables
 var scoreIdCounter = 0;
 var score = 0;
 var questionIndex = 0;
@@ -223,6 +200,7 @@ var allDone = function () {
   submitButton.addEventListener("click", initialsFormHandler);
 };
 
+// Save scores to local storage
 var saveScores = function () {
   localStorage.setItem("all-scores", JSON.stringify(allScores));
 };
