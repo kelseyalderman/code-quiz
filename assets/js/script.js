@@ -75,7 +75,7 @@ var choiceListEl = document.createElement("ol");
 var finalScore = "";
 
 // Array to hold scores for saving
-var allScores = [];
+let allScores = JSON.parse(localStorage.getItem("all-scores")) || [];
 
 // Countdown function
 function countdown() {
@@ -108,6 +108,7 @@ function render(questionIndex) {
 
   quizChoices.forEach(function (newItem) {
     var choiceEl = document.createElement("li");
+    choiceEl.setAttribute("class", "choices");
     choiceEl.textContent = newItem;
     quizContentEl.appendChild(choiceListEl);
     choiceListEl.appendChild(choiceEl);
@@ -155,32 +156,19 @@ var initialsFormHandler = function (event) {
   if (initialsInput === "") {
     alert("You need to add your initials to save your score!");
     return false;
+  } else {
+    var finalScoreObj = {
+      initials: initialsInput,
+      score: finalScore,
+    };
+
+    allScores.push(finalScoreObj);
   }
 
-  var finalScoreObj = {
-    name: initialsInput,
-    score: finalScore,
-  };
-
-  createNewScore(finalScoreObj);
-};
-
-var createNewScore = function (finalScoreObj) {
-  var scoreItemEl = document.createElement("li");
-  scoreItemEl.setAttribute("class", "score-item");
-  scoreItemEl.setAttribute("id", scoreIdCounter);
-  scoreItemEl.textContent = finalScoreObj.name + "-" + finalScoreObj.score;
-
-  // save score as an object with name, type, status, and id properties then push it into allScores array
-  finalScoreObj.id = scoreIdCounter;
-
-  allScores.push(finalScoreObj);
-
-  // save tasks to localStorage
   saveScores();
 
-  // increase task counter for next unique task id
-  scoreIdCounter++;
+  // Link to high scores page
+  window.location.replace("./high-scores.html");
 };
 
 // Show final page
@@ -236,7 +224,7 @@ var allDone = function () {
 };
 
 var saveScores = function () {
-  localStorage.setItem("allScores", JSON.stringify(allScores));
+  localStorage.setItem("all-scores", JSON.stringify(allScores));
 };
 
 startTimerEl.addEventListener("click", countdown);

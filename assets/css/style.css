@@ -49,13 +49,13 @@ header a:hover {
   width: 500px;
 }
 
-#question {
-  text-align: left;
+.heading-center {
+  text-align: center;
   margin: 25px auto;
   width: 500px;
 }
 
-li {
+.choices {
   background-color: #4f11a0;
   margin-top: 10px;
   padding: 5px 15px;
@@ -63,6 +63,14 @@ li {
   color: white;
   border-radius: 5px;
   width: 200px;
+}
+
+.scores {
+  background-color: #d8c0ed;
+  width: 500px;
+  margin-top: 10px;
+  padding: 5px 15px;
+  font-size: 12px;
 }
 
 #feedback {
@@ -92,4 +100,26 @@ li {
 .btn:hover {
   background-color: #dc11e0;
   cursor: pointer;
+}
+
+#high-scores {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px auto;
+  width: 500px;
+}
+
+#buttons {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px auto;
+  width: 500px;
+}
+
+#score-content {
+  margin-top: 130px;
 }
