@@ -12,7 +12,7 @@ An application that allows users to take a timed quiz on JavaScript fundamentals
 
 ## Website
 
-https://kelseyalderman.github.io/password-generator/
+https://kelseyalderman.github.io/code-quiz/
 
 ## Preview
 
